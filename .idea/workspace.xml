@@ -75,9 +75,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+<<<<<<< Updated upstream
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571079540037" />
     <property name="last_opened_file_path" value="$USER_HOME$/OpenCV/opencv-4.1.1/build/bin/opencv-411.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571262117359" />
+    <property name="last_opened_file_path" value="/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/resources.jar!/" />
+    <property name="project.structure.last.edited" value="SDKs" />
+>>>>>>> Stashed changes
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>

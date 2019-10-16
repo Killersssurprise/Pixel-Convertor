@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Palette {
 
-    public static final List<PaletteColor> colors = new ArrayList<>();//new ArrayList().add(new PaletteColor());
+    private static final List<PaletteColor> colors = new ArrayList<>();//new ArrayList().add(new PaletteColor());
 
     static {
 
@@ -37,8 +37,19 @@ public class Palette {
         colors.add(new PaletteColor("C3D117", 22));
         colors.add(new PaletteColor("FCC700", 23));
         colors.add(new PaletteColor("D38301", 24));
-//        colors.add(new PaletteColor("D38301", -1));
 
+    }
+
+    public static void updateColors(String[] newColors){
+        if(newColors.length>0){
+
+            colors.clear();
+
+            for(int i=0;i<newColors.length;i++){
+                colors.add(new PaletteColor(newColors[i],i));
+            }
+
+        }
     }
 
     public static boolean containThisColor(String hex2) {
@@ -49,21 +60,6 @@ public class Palette {
         }
         return false;
     }
-
-//    private static int hexGetR(String hex) {
-//        int color = Integer.parseUnsignedInt(hex, 16);
-//        return ((color & 0xff000000) >>> 24);
-//    }
-//
-//    private static int hexGetG(String hex) {
-//        int color = Integer.parseUnsignedInt(hex, 16);
-//        return ((color & 0x00ff0000) >>> 16);
-//    }
-//
-//    private static int hexGetB(String hex) {
-//        int color = Integer.parseUnsignedInt(hex, 16);
-//        return ((color & 0x0000ff00) >>> 8);
-//    }
 
     public static double[] rgb2lab(double R, double G, double B) {
         //http://www.brucelindbloom.com
@@ -136,41 +132,6 @@ public class Palette {
         return lab;
     }
 
-//    public static double[] hexGetHSV(int red, int green, int blue) {
-//
-////        Color c = Color.decode("#" + hex);
-//
-//        //method returns from 0 to 1
-//        float[] hsvData = Color.RGBtoHSB(red,green, blue, null);
-//
-//
-//        hsvData[0] *= 360;
-//        hsvData[1] *= 100;
-//        hsvData[2] *= 100;
-//
-//        double[] output = new double[3];
-//        output[0] = hsvData[0];
-//        output[1] = hsvData[1];
-//        output[2] = hsvData[2];
-//        return output;
-//
-//    }
-
-//    public String findlosestPaletteColorHSVData(double[] dataHSV) {
-//
-//        PaletteColor closestColor = null;
-//        float closestDistance = Integer.MAX_VALUE;
-//        for (final PaletteColor paletteColor : colors) {
-//            final float distance = paletteColor.rgbDistanceTo(dataHSV);
-//            if (distance < closestDistance) {
-//                closestDistance = distance;
-//                closestColor = paletteColor;
-//
-//            }
-//        }
-//        return Objects.requireNonNull(closestColor).getHex();
-//    }
-
     public PaletteColor findlosestPaletteColorRGBData(float r, float g, float b) {
 
         PaletteColor closestColor = null;
@@ -221,13 +182,8 @@ public class Palette {
         public final double r;
         public final double g;
         public final double b;
-        //        private final int color;
-//        private final double h;
-//        private final double s;
-//        private final double v;
-//        private final double[] hsvData;
         private int colorID;
-        public final String hex;
+        final String hex;
         private double[] lab;
 
         public PaletteColor(final String hex, int colorID) {
@@ -239,13 +195,6 @@ public class Palette {
 
             this.lab = rgb2lab(this.r, this.g, this.b);
 
-
-
-//            hsvData = hexGetHSV(r,g,b);
-//            h=hsvData[0];
-//            s=hsvData[1];
-//            v=hsvData[2];
-
         }
 
         int getColorID() {
@@ -256,32 +205,9 @@ public class Palette {
             return hex;
         }
 
-
-//        int rgbDistanceTo(final int color) {
-////        float rgbDistanceTo(final int color) {
-//            final int deltaR = this.r - ((color & 0xff000000) >>> 24);
-//            final int deltaG = this.g - ((color & 0x00ff0000) >>> 16);
-//            final int deltaB = this.b - ((color & 0x0000ff00) >>> 8);
-//            return (deltaR * deltaR) + (deltaG * deltaG) + (deltaB * deltaB);
-////            return (0.3f*deltaR) + (0.59f*deltaG) + (0.11f*deltaB);
-//        }
-
-//        public float rgbDistanceTo(double[] hsvData) {
-////            return (int) Math.min(Math.abs(data[0] - this.h), 360 - Math.abs(data[0] - this.h));
-////            System.out.println("Distance to data: "+ Arrays.toString(data));
-//
-//
-//
-//            return (float) (Math.abs(hsvData[0] - this.hsvData[0]));
-////            return (int) Math.min(Math.abs(data[0] - this.h), 360 - Math.abs(data[0] - this.h));
-//
-//        }
-
         public float rgbDistanceTo(float r, float g, float b) {
 
             double[] r1 = rgb2lab(r, g, b);
-//            double[] r2 = rgb2lab(this.r, this.g, this.b);
-
 
             return (float) Math.abs(Math.sqrt(
                     (Math.pow(r1[0] - lab[0], 2)) +
@@ -291,10 +217,6 @@ public class Palette {
 
         public float labDistanceTo(double l, double a, double b) {
 
-//            double[] r1 = rgb2lab(r, g, b);
-//            double[] r2 = rgb2lab(this.r, this.g, this.b);
-
-
             return (float) Math.abs(Math.sqrt(
                     (Math.pow(l - lab[0], 2)) +
                             (Math.pow(a - lab[1], 2)) +
@@ -302,10 +224,6 @@ public class Palette {
         }
 
         public float labDistanceTo(double l) {
-
-//            double[] r1 = rgb2lab(r, g, b);
-//            double[] r2 = rgb2lab(this.r, this.g, this.b);
-
 
             return (float) Math.abs(Math.sqrt(
                     (Math.pow(l - lab[0], 2))));
@@ -318,7 +236,6 @@ public class Palette {
     }
 
     public static String toHex2(int r, int g, int b) {
-//        return String.format("#%02X%02X%02X", r, g, b);
         return String.format("%02X%02X%02X", r, g, b);
     }
 

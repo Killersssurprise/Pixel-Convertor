@@ -65,17 +65,17 @@ public class Palette {
 //        return ((color & 0x0000ff00) >>> 8);
 //    }
 
-    public static double[] rgb2lab(float R, float G, float B) {
+    public static double[] rgb2lab(double R, double G, double B) {
         //http://www.brucelindbloom.com
 
-        float r, g, b, X, Y, Z, fx, fy, fz, xr, yr, zr;
-        float Ls, as, bs;
-        float eps = 216.f / 24389.f;
-        float k = 24389.f / 27.f;
+        double r, g, b, X, Y, Z, fx, fy, fz, xr, yr, zr;
+        double Ls, as, bs;
+        double eps = 216.f / 24389.f;
+        double k = 24389.f / 27.f;
 
-        float Xr = 0.964221f;  // reference white D50
-        float Yr = 1.0f;
-        float Zr = 0.825211f;
+        double Xr = 0.964221f;  // reference white D50
+        double Yr = 1.0f;
+        double Zr = 0.825211f;
 
         // RGB to XYZ
         r = R / 255.f; //R 0..1
@@ -161,7 +161,7 @@ public class Palette {
 //        PaletteColor closestColor = null;
 //        float closestDistance = Integer.MAX_VALUE;
 //        for (final PaletteColor paletteColor : colors) {
-//            final float distance = paletteColor.distanceTo(dataHSV);
+//            final float distance = paletteColor.rgbDistanceTo(dataHSV);
 //            if (distance < closestDistance) {
 //                closestDistance = distance;
 //                closestColor = paletteColor;
@@ -171,40 +171,75 @@ public class Palette {
 //        return Objects.requireNonNull(closestColor).getHex();
 //    }
 
-    public String findlosestPaletteColorRGBData(float r, float g, float b) {
+    public PaletteColor findlosestPaletteColorRGBData(float r, float g, float b) {
 
         PaletteColor closestColor = null;
         float closestDistance = Integer.MAX_VALUE;
         for (final PaletteColor paletteColor : colors) {
-            final float distance = paletteColor.distanceTo(r, g, b);
+            final float distance = paletteColor.rgbDistanceTo(r, g, b);
             if (distance < closestDistance) {
                 closestDistance = distance;
                 closestColor = paletteColor;
 
             }
         }
-        return Objects.requireNonNull(closestColor).getHex();
+        return closestColor;
+    }
+
+    public PaletteColor findlosestPaletteColorLABData(double l, double a, double b) {
+
+        PaletteColor closestColor = null;
+        float closestDistance = Integer.MAX_VALUE;
+        for (final PaletteColor paletteColor : colors) {
+            final float distance = paletteColor.labDistanceTo(l,a,b);
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestColor = paletteColor;
+
+            }
+        }
+        return closestColor;
+    }
+
+    public PaletteColor findlosestPaletteColorLABData(double l) {
+
+        PaletteColor closestColor = null;
+        float closestDistance = Integer.MAX_VALUE;
+        for (final PaletteColor paletteColor : colors) {
+            final float distance = paletteColor.labDistanceTo(l);
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestColor = paletteColor;
+
+            }
+        }
+        return closestColor;
     }
 
 
     public static final class PaletteColor {
-        private final int r;
-        private final int g;
-        private final int b;
+        public final double r;
+        public final double g;
+        public final double b;
         //        private final int color;
 //        private final double h;
 //        private final double s;
 //        private final double v;
 //        private final double[] hsvData;
         private int colorID;
-        private final String hex;
+        public final String hex;
+        private double[] lab;
 
-        PaletteColor(final String hex, int colorID) {
+        public PaletteColor(final String hex, int colorID) {
             this.hex = hex.toUpperCase();
             this.colorID = colorID;
             r = Color.decode("#" + hex).getRed();
             g = Color.decode("#" + hex).getGreen();
             b = Color.decode("#" + hex).getBlue();
+
+            this.lab = rgb2lab(this.r, this.g, this.b);
+
+
 
 //            hsvData = hexGetHSV(r,g,b);
 //            h=hsvData[0];
@@ -222,8 +257,8 @@ public class Palette {
         }
 
 
-//        int distanceTo(final int color) {
-////        float distanceTo(final int color) {
+//        int rgbDistanceTo(final int color) {
+////        float rgbDistanceTo(final int color) {
 //            final int deltaR = this.r - ((color & 0xff000000) >>> 24);
 //            final int deltaG = this.g - ((color & 0x00ff0000) >>> 16);
 //            final int deltaB = this.b - ((color & 0x0000ff00) >>> 8);
@@ -231,7 +266,7 @@ public class Palette {
 ////            return (0.3f*deltaR) + (0.59f*deltaG) + (0.11f*deltaB);
 //        }
 
-//        public float distanceTo(double[] hsvData) {
+//        public float rgbDistanceTo(double[] hsvData) {
 ////            return (int) Math.min(Math.abs(data[0] - this.h), 360 - Math.abs(data[0] - this.h));
 ////            System.out.println("Distance to data: "+ Arrays.toString(data));
 //
@@ -242,16 +277,38 @@ public class Palette {
 //
 //        }
 
-        public float distanceTo(float r, float g, float b) {
+        public float rgbDistanceTo(float r, float g, float b) {
 
             double[] r1 = rgb2lab(r, g, b);
-            double[] r2 = rgb2lab(this.r, this.g, this.b);
+//            double[] r2 = rgb2lab(this.r, this.g, this.b);
 
 
             return (float) Math.abs(Math.sqrt(
-                    (Math.pow(r1[0] - r2[0], 2)) +
-                            (Math.pow(r1[1] - r2[1], 2)) +
-                            (Math.pow(r1[2] - r2[2], 2))));
+                    (Math.pow(r1[0] - lab[0], 2)) +
+                            (Math.pow(r1[1] - lab[1], 2)) +
+                            (Math.pow(r1[2] - lab[2], 2))));
+        }
+
+        public float labDistanceTo(double l, double a, double b) {
+
+//            double[] r1 = rgb2lab(r, g, b);
+//            double[] r2 = rgb2lab(this.r, this.g, this.b);
+
+
+            return (float) Math.abs(Math.sqrt(
+                    (Math.pow(l - lab[0], 2)) +
+                            (Math.pow(a - lab[1], 2)) +
+                            (Math.pow(b - lab[2], 2))));
+        }
+
+        public float labDistanceTo(double l) {
+
+//            double[] r1 = rgb2lab(r, g, b);
+//            double[] r2 = rgb2lab(this.r, this.g, this.b);
+
+
+            return (float) Math.abs(Math.sqrt(
+                    (Math.pow(l - lab[0], 2))));
         }
 
     }

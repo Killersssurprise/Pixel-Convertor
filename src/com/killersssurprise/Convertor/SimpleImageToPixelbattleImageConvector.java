@@ -1,13 +1,15 @@
 package com.killersssurprise.Convertor;
 
+import com.killersssurprise.ApplicationArguments.ApplicationArguments;
 import com.killersssurprise.Palette.Palette;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
 import org.opencv.core.Point;
-import org.opencv.core.*;
+import org.opencv.core.Size;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
-import java.awt.*;
-
+import java.util.Arrays;
 
 
 public class SimpleImageToPixelbattleImageConvector {
@@ -16,10 +18,51 @@ public class SimpleImageToPixelbattleImageConvector {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 
+    private static final String KEY_WIDTH = "-width";
+    private static final String KEY_HEIGHT = "-height";
+    private static final String KEY_RED_CORRECTION = "-R";
+    private static final String KEY_GREEN_CORRECTION = "-G";
+    private static final String KEY_BLUE_CORRECTION = "-B";
+
+    private static final String KEY_INPUT_PATH = "-input";
+    private static final String KEY_OUTPUT_PATH = "-output";
+
+    private static final String KEY_MEDIAN = "-median";
+
     public static void main(String[] args) {
 
-        String inputPath = "/home/mixa/cheb.jpg";
-        String outputPath = "/home/mixa/cheb.png";
+        boolean debug = true;
+
+        System.out.println("Args before: "+ Arrays.toString(args));
+
+        ApplicationArguments arguments = new ApplicationArguments(args);
+
+
+//        if(arguments.containKey(KEY_WIDTH)){
+//            System.out.println("Arguments contain: "+KEY_WIDTH);
+//        }
+
+
+        System.out.println(arguments.toString());
+
+
+
+
+//        String inputPath = "/home/mixa/crusader.bmp";
+//        String outputPath = "/home/mixa/initial_d/crusader.png";
+
+        String inputPath = "";
+        String outputPath = "";
+
+
+        if(debug){
+            if(arguments.containKey(KEY_INPUT_PATH))
+            inputPath = arguments.getValue(KEY_INPUT_PATH);
+
+            if(arguments.containKey(KEY_OUTPUT_PATH))
+            outputPath = arguments.getValue(KEY_OUTPUT_PATH);
+
+        }
 
         //read image
 
@@ -45,16 +88,16 @@ public class SimpleImageToPixelbattleImageConvector {
 //        Imgcodecs.imwrite("/home/mixa/crusader_HSV.png", hsv);
 
 //        imgIncome = hsv;
-        Mat output = new Mat();
-        imgIncome.convertTo(output, CvType.CV_8U);
-        imgIncome = output;
+//        Mat output = new Mat();
+//        imgIncome.convertTo(output, CvType.CV_8U);
+//        imgIncome = output;
 
 
         /***/
         imgIncome = medianBlurFiltration(imgIncome, 1);
 
         /***/
-        Mat img2 = new Mat();
+//        Mat img2 = new Mat();
 //
 //        Imgproc.bilateralFilter(imgIncome, img2, 39, 5 * 2, 5 * 2);
 //        Imgproc.bilateralFilter(imgIncome, img2, 19, 5 * 2, 5 * 2);
@@ -94,7 +137,8 @@ public class SimpleImageToPixelbattleImageConvector {
 //        Size scaleSize = new Size(100, 100);
 //        Size scaleSize = new Size(200, 250);
 //        imgIncome = resize(imgIncome, scaleSize);
-        colorConvert(imgIncome);
+        Palette p = new Palette();
+        colorConvert(imgIncome,p);
 //        colorConvert(imgIncome);
 
 //        boolean makingColor = true;
@@ -160,13 +204,18 @@ public class SimpleImageToPixelbattleImageConvector {
     }
 
 
-    private static Mat colorConvert(Mat income) {
-        Palette p = new Palette();
+    public static Mat colorConvert(Mat income, Palette p) {
+
         int rows = income.rows(); //Calculates number of rows
         int cols = income.cols(); //Calculates number of columns
 
         int percentDoneCounter = 0;
 
+        Imgproc.cvtColor(income,income,Imgproc.COLOR_BGR2RGB);
+
+
+//        Mat incomeLab = new Mat();
+//        Imgproc.cvtColor(income,incomeLab,Imgproc.COLOR_RGB2Lab);
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -174,31 +223,36 @@ public class SimpleImageToPixelbattleImageConvector {
                 double[] data = income.get(i, j); //Stores element in an array
 
                 try {
-                    /**was working*/
-//                        String hexValue = OperaColor.toHexNoSharp((int) data[2], (int) data[1], (int) data[0]).toUpperCase();
-                    String hexValue = Palette.toHex2((int) data[2], (int) data[1], (int) data[0]);
 
                     /**working*/
-                    String c = "#" + p.findlosestPaletteColorRGBData((int) data[2], (int) data[1], (int) data[0]).toUpperCase();
+//                    String c = "#" + p.findlosestPaletteColorRGBData((int) data[2], (int) data[1], (int) data[0]).toUpperCase();
+//                    Palette.PaletteColor closestColor = p.findlosestPaletteColorRGBData((int) data[2], (int) data[1], (int) data[0]);
+//                    Palette.PaletteColor closestColor = p.findlosestPaletteColorRGBData((int) data[0], (int) data[1], (int) data[2]);
 
-                    data[2] = Color.decode(c).getRed();
-                    data[1] = Color.decode(c).getGreen();
-                    data[0] = Color.decode(c).getBlue();
 
-//                        if(!Palette.containThisColor(hexValue.toUpperCase())){
-////                            System.out.println("Color didn't found in palette: rgb: "+data[2]+" "+data[1]+" "+data[0]);
-//                            System.out.println("Color didn't found in palette: hex: "+hexValue);
-//                            System.out.println("RGB are: "+data[2]+" "+data[1]+" "+data[0]);
-//                            System.out.println("Replaced with: "+c);
-////                            if(data[2]!=Color.decode(c).getRed() || data[1]!=Color.decode(c).getGreen() || data[0]!=Color.decode(c).getBlue()){
-////                                System.out.println("RGB different!");
-////                            }
-//
-//                        }
+                    double[] labInput = Palette.rgb2lab(data[0], data[1], data[2]);
+                    Palette.PaletteColor closestColor = p.findlosestPaletteColorLABData(labInput[0],labInput[1],labInput[2]);
 
-//                        data[2] = Color.decode("#" + Integer.toHexString(p.findClosestPaletteColorTo(hexValue))).getRed();
-//                        data[1] = Color.decode("#" + Integer.toHexString(p.findClosestPaletteColorTo(hexValue))).getGreen();
-//                        data[0] = Color.decode("#" + Integer.toHexString(p.findClosestPaletteColorTo(hexValue))).getBlue();
+//                    double[] labData = incomeLab.get(i, j); //Stores element in an array
+//                    Palette.PaletteColor closestColor = p.findlosestPaletteColorLABData(labData[0],labData[1],labData[2]);
+
+
+
+//                    double[] data2 = incomeLab.get(i, j); //Stores element in an array
+//                    Palette.PaletteColor closestColor2 = p.findlosestPaletteColorLABData((int) data2[0], (int) data2[1], (int) data2[2]);
+
+//                    if(!closestColor.hex.equals(closestColor2.hex)){
+//                        System.out.println("Colors rgb different!: "+closestColor.hex+" != "+closestColor2.hex);
+//                    }
+
+//                    data[2] = closestColor.r;
+//                    data[1] = closestColor.g;
+//                    data[0] = closestColor.b;
+
+                    data[0] = closestColor.r;
+                    data[1] = closestColor.g;
+                    data[2] = closestColor.b;
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -214,18 +268,22 @@ public class SimpleImageToPixelbattleImageConvector {
             }
 
             float done = (float) i / rows * 100;
-            if (percentDoneCounter < (int) done) {
+            if (percentDoneCounter < (int) done ) {
                 percentDoneCounter = (int) done;
                 clearConsole();
+                if(percentDoneCounter%5==0)
                 System.out.println("Converting... " + percentDoneCounter + "%");
             }
 
         }
 
+
+        Imgproc.cvtColor(income,income,Imgproc.COLOR_RGB2BGR);
+
         return income;
     }
 
-    private static Mat medianBlurFiltration(Mat imgIncome, int ksize) {
+    public static Mat medianBlurFiltration(Mat imgIncome, int ksize) {
         Mat output = new Mat();
         Imgproc.medianBlur(imgIncome, output, ksize);
         return output;

@@ -25,7 +25,7 @@ Here is an inline
 
 ### Tech
 
-Image Pixel Converter itself is open source with a [public repository][dill]
+Image Pixel Converter itself is open source with a [public repository][Pixel Convertor]
  on GitHub.
 
 ### Installation
@@ -86,10 +86,18 @@ $ java -jar <how_you_call_artifacts_name>.jar -g 20 -dilate 1 -width 260 -height
 - ![#FCC700](https://placehold.it/15/FCC700/074BF3?text=+) `#FCC700`
 - ![#D38301](https://placehold.it/15/D38301/000000?text=+) `#D38301`
 
+### Tech
+
+Pixelizer uses a number of open source projects to work properly:
+
+* [OpenCV] - Open Source Computer Vision Library
+* [Android-Color dif] - Tool for analyzing human's vision color recognizing
+
 
 # Todos:
   - Import and pixelize images from Internet
   - Add more filter methods
+  - Add video pixelize methods
 
 
 License
@@ -103,19 +111,10 @@ MIT
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
 
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
-   [node.js]: <http://nodejs.org>
-   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
-   [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
-   [AngularJS]: <http://angularjs.org>
-   [Gulp]: <http://gulpjs.com>
+
+   [Android-Color dif]: <https://github.com/nekdenis/Android-ColorDiff.git>
+   [OpenCV]: <https://github.com/opencv/opencv.git>
+   [Pixel Convertor]: <https://github.com/Killersssurprise/Pixel-Convertor.gitt>
 
    [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
    [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>

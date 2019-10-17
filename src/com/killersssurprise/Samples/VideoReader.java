@@ -1,6 +1,6 @@
 package com.killersssurprise.Samples;
 
-import com.killersssurprise.Convertor.SimpleImageToPixelbattleImageConvector;
+import com.killersssurprise.Convertor.SimpleImageConvector;
 import com.killersssurprise.Palette.Palette;
 import com.killersssurprise.Utils.CvUtils;
 import org.opencv.core.*;
@@ -50,7 +50,7 @@ public class VideoReader {
             if(frame_counter%5!=0) {
 
 
-//            frame = SimpleImageToPixelbattleImageConvector.medianBlurFiltration(frame, 1);
+//            frame = SimpleImageConvector.medianBlurFiltration(frame, 1);
                 Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
                         new Size(7, 7));
                 Imgproc.dilate(frame, frame, kernel);
@@ -76,7 +76,7 @@ public class VideoReader {
 //            frame = mat2;
 
 //            Imgproc.resize(frame, frame, new Size(1280, 720));
-                frame = SimpleImageToPixelbattleImageConvector.colorConvert(frame, p);
+                frame = SimpleImageConvector.colorConvert(frame, p);
 
             }else{
                 Imgproc.resize(frame, frame, new Size(640, 360));

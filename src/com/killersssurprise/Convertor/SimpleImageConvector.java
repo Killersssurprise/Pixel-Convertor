@@ -9,8 +9,12 @@ import org.opencv.core.Size;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
+/**
+ * @author killersssurprise
+ * 17.10.19
+ */
 
-public class SimpleImageToPixelbattleImageConvector {
+public class SimpleImageConvector {
 
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -35,7 +39,7 @@ public class SimpleImageToPixelbattleImageConvector {
 
         ApplicationArguments arguments = new ApplicationArguments(args);
 
-        System.out.println(arguments.toString());
+//        System.out.println(arguments.toString());
 
 
         String inputPath = "";
@@ -103,78 +107,16 @@ public class SimpleImageToPixelbattleImageConvector {
             }
 
             Palette.updateColors(newColors);
-        } else {
-            System.out.println("Not found one from width and height arguments, making size as incoming img");
         }
 
 
         Palette p = new Palette();
-        colorConvert(imgIncome, p);
+
+        Convertor.colorConvert(imgIncome, p);
 
 
         Imgcodecs.imwrite(outputPath, imgIncome);
 
-    }
-
-
-    public static Mat colorConvert(Mat income, Palette p) {
-
-        int rows = income.rows(); //Calculates number of rows
-        int cols = income.cols(); //Calculates number of columns
-
-        int percentDoneCounter = 0;
-
-        Imgproc.cvtColor(income, income, Imgproc.COLOR_BGR2RGB);
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-
-                double[] data = income.get(i, j); //Stores element in an array
-
-                try {
-
-
-                    double[] labInput = Palette.rgb2lab(data[0], data[1], data[2]);
-                    Palette.PaletteColor closestColor = p.findlosestPaletteColorLABData(labInput[0], labInput[1], labInput[2]);
-
-                    data[0] = closestColor.r;
-                    data[1] = closestColor.g;
-                    data[2] = closestColor.b;
-
-                    income.put(i, j, data);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            float done = (float) i / rows * 100;
-            if (percentDoneCounter < (int) done) {
-                percentDoneCounter = (int) done;
-                clearConsole();
-                if (percentDoneCounter % 5 == 0)
-                    System.out.println("Converting... " + percentDoneCounter + "%");
-            }
-
-        }
-
-        Imgproc.cvtColor(income, income, Imgproc.COLOR_RGB2BGR);
-
-        return income;
-    }
-
-    public final static void clearConsole() {
-        try {
-            final String os = System.getProperty("os.name");
-
-            if (os.contains("Windows")) {
-                Runtime.getRuntime().exec("cls");
-            } else {
-                Runtime.getRuntime().exec("clear");
-            }
-        } catch (final Exception e) {
-            //  Handle any exceptions.
-        }
     }
 
 }

@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Pixel Convertor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Pixel_Convertor_jar</output-path>
+    <root id="archive" name="Pixel Convertor.jar">
+      <element id="module-output" name="Pixel Convertor" />
+      <element id="extracted-dir" path="$USER_HOME$/OpenCV/opencv-4.1.1/build/bin/opencv-411.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

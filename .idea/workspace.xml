@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Pixel Convertor:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e15dc37c-a44f-4e49-baf8-39c063c5d208" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Pixel_Convertor_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/killersssurprise/Convertor/Convertor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageToPixelbattleImageConvector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageToPixelbattleImageConvector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killersssurprise/Palette/Palette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killersssurprise/Palette/Palette.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageToPixelbattleImageConvector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageConvector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/killersssurprise/Samples/VideoReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killersssurprise/Samples/VideoReader.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,35 +23,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageConvector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageToPixelbattleImageConvector.java">
+        <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Convertor/Convertor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Samples/VideoReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="64" column="58" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Utils/Tester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="658">
-              <caret line="55" selection-start-line="54" selection-start-column="13" selection-end-line="55" />
+            <state relative-caret-position="825">
+              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,6 +65,7 @@
       <find>kernel</find>
       <find>resize</find>
       <find>medianBlurFiltration</find>
+      <find>Not</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -87,14 +84,17 @@
         <option value="$PROJECT_DIR$/src/com/killersssurprise/ApplicationArguments/ApplicatonArguments.java" />
         <option value="$PROJECT_DIR$/src/com/killersssurprise/ApplicationArguments/ApplicationArguments.java" />
         <option value="$PROJECT_DIR$/src/com/killersssurprise/Palette/Palette.java" />
+        <option value="$PROJECT_DIR$/src/com/killersssurprise/Convertor/Convertor.java" />
         <option value="$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageToPixelbattleImageConvector.java" />
+        <option value="$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageConvector.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="49" />
     <option name="y" value="27" />
-    <option name="width" value="1366" />
-    <option name="height" value="741" />
+    <option name="width" value="1356" />
+    <option name="height" value="555" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -110,6 +110,11 @@
             <path>
               <item name="Pixel Convertor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pixel Convertor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Pixel Convertor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pixel Convertor" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Pixel Convertor" type="b2602c69:ProjectViewProjectNode" />
@@ -160,12 +165,16 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571262068721" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="pixel_convertor" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571328423871" />
     <property name="last_opened_file_path" value="/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/resources.jar!/" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propGUI" />
+    <property name="settings.editor.selected.configurable" value="copyright" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -187,9 +196,9 @@
   </component>
   <component name="RunManager" selected="Application.ImageConvertor">
     <configuration name="ImageConvertor" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.killersssurprise.Convertor.SimpleImageToPixelbattleImageConvector" />
+      <option name="MAIN_CLASS_NAME" value="com.killersssurprise.Convertor.SimpleImageConvector" />
       <module name="Pixel Convertor" />
-      <option name="PROGRAM_PARAMETERS" value="-colors #FFFFFF,000000 -g 20 -r 30 -dilate 1 -width 100 -height 100 -input $USER_HOME$/crusader.bmp -output $USER_HOME$/initial_d/crusader.png" />
+      <option name="PROGRAM_PARAMETERS" value="-g 20 -r -30 -dilate 1 -width 100 -height 100 -input $USER_HOME$/crusader.bmp -output $USER_HOME$/initial_d/crusader.png" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -237,9 +246,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19848485" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19848485" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -248,12 +256,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20655738" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.59836066" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27540985" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38032788" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.27868852" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.20655738" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3295082" />
@@ -293,16 +301,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainInterface.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainInterface.java" />
+    <entry file="file://$PROJECT_DIR$/src/MainInterface.form" />
     <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/ApplicationArguments/ApplicationArguments.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-315">
@@ -345,10 +345,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageToPixelbattleImageConvector.java">
+    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Convertor/Sample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+        <state relative-caret-position="90">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageConvector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Convertor/Convertor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -361,10 +378,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>Pixel Convertor:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

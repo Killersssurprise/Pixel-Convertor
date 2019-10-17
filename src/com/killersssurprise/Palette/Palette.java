@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author killersssurprise
+ * 10.9.19
+ */
+
 public class Palette {
 
     private static final List<PaletteColor> colors = new ArrayList<>();//new ArrayList().add(new PaletteColor());

@@ -15,9 +15,9 @@ Pixel converter is a  mobile-ready, offline-ready, OpenCV powered Java Image con
 
 Here is an inline 
 
-<img src="https://i.pinimg.com/originals/b8/a8/a2/b8a8a2b3d11ca5a56702899fb0e60028.jpg" alt="text" width="100" height="100">
-
-![test](https://i.pinimg.com/originals/b8/a8/a2/b8a8a2b3d11ca5a56702899fb0e60028.jpg){:height="224px" width="428px"}
+<img src="https://i.pinimg.com/originals/b8/a8/a2/b8a8a2b3d11ca5a56702899fb0e60028.jpg" alt="text" width="351" height="443">
+after updates 
+<img src="https://i.pinimg.com/originals/b8/a8/a2/b8a8a2b3d11ca5a56702899fb0e60028.jpg" alt="text" width="351" height="443">
 
 ### Tech
 

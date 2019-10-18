@@ -1,6 +1,6 @@
-package com.killersssurprise.ApplicationArguments;
+package com.killersssurprise.applicationarguments;
 
-import com.killersssurprise.Convertor.SimpleImageConvector;
+import com.killersssurprise.сonverter.SimpleImageConverter;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ public class ApplicationArguments {
     public ApplicationArguments(String[] args){
 
         if(Arrays.toString(args).toLowerCase().contains("-help")){
-            SimpleImageConvector.printHelp();
+            SimpleImageConverter.printHelp();
             System.exit(1);
         }
 
@@ -49,9 +49,9 @@ public class ApplicationArguments {
     @Override
     public String toString() {
         if(keysAndValues.isEmpty())
-            return "ApplicationArguments is empty";
+            return "applicationarguments is empty";
         else
-            return "ApplicationArguments{" +
+            return "applicationarguments{" +
                 "keysAndValues=" + keysAndValues +
                 '}';
     }

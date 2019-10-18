@@ -1,7 +1,7 @@
-package com.killersssurprise.Convertor;
+package com.killersssurprise.сonverter;
 
-import com.killersssurprise.ApplicationArguments.ApplicationArguments;
-import com.killersssurprise.Palette.Palette;
+import com.killersssurprise.applicationarguments.ApplicationArguments;
+import com.killersssurprise.palette.Palette;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
@@ -14,7 +14,7 @@ import org.opencv.imgproc.Imgproc;
  * 17.10.19
  */
 
-public class SimpleImageConvector {
+public class SimpleImageConverter {
 
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -35,7 +35,6 @@ public class SimpleImageConvector {
     private static final String KEY_GAUSS = "-gauss";
     private static final String KEY_DILATE = "-dilate";
     private static final String KEY_ERODE = "-erode";
-    private static final String KEY_HELP = "-help";
 
     private static final String KEY_COLORS = "-colors";
 
@@ -214,8 +213,7 @@ public class SimpleImageConvector {
 
 
         Palette p = new Palette();
-
-        Convertor.colorConvert(imgIncome, p);
+        Converter.colorConvert(imgIncome, p);
 
 
         Imgcodecs.imwrite(outputPath, imgIncome);

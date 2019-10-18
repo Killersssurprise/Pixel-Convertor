@@ -1,4 +1,4 @@
-package com.killersssurprise.Palette;
+package com.killersssurprise.palette;
 
 import java.awt.*;
 import java.util.ArrayList;

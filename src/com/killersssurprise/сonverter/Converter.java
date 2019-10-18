@@ -1,6 +1,6 @@
-package com.killersssurprise.Convertor;
+package com.killersssurprise.сonverter;
 
-import com.killersssurprise.Palette.Palette;
+import com.killersssurprise.palette.Palette;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 
@@ -9,7 +9,7 @@ import org.opencv.imgproc.Imgproc;
  * 11.9.19
  */
 
-public class Convertor {
+public class Converter {
 
     public static Mat colorConvert(Mat income, Palette p) {
 

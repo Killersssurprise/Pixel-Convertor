@@ -1,4 +1,4 @@
-package com.killersssurprise.Utils;
+package com.killersssurprise.utils;
 
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;

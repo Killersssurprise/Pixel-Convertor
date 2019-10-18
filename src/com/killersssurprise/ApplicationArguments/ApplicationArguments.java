@@ -38,11 +38,11 @@ public class ApplicationArguments {
         return Integer.parseInt(keysAndValues.get(key.toLowerCase()));
     }
 
-    public double getDoubleValue(String key){
-        assert !containKey(key.toLowerCase());
-
-        return Double.parseDouble(keysAndValues.get(key.toLowerCase()));
-    }
+//    public double getDoubleValue(String key){
+//        assert !containKey(key.toLowerCase());
+//
+//        return Double.parseDouble(keysAndValues.get(key.toLowerCase()));
+//    }
 
     @Override
     public String toString() {

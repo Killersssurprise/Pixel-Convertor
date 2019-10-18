@@ -28,7 +28,7 @@ public class Convertor {
                 try {
 
                     double[] labInput = Palette.rgb2lab(data[0], data[1], data[2]);
-                    Palette.PaletteColor closestColor = p.findlosestPaletteColorLABData(labInput[0], labInput[1], labInput[2]);
+                    Palette.PaletteColor closestColor = p.findClosestPaletteColorLABData(labInput[0], labInput[1], labInput[2]);
 
                     data[0] = closestColor.r;
                     data[1] = closestColor.g;

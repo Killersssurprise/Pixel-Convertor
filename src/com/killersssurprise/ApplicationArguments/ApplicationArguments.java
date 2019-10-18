@@ -1,5 +1,8 @@
 package com.killersssurprise.ApplicationArguments;
 
+import com.killersssurprise.Convertor.SimpleImageConvector;
+
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class ApplicationArguments {
@@ -7,6 +10,12 @@ public class ApplicationArguments {
     private HashMap<String, String> keysAndValues;
 
     public ApplicationArguments(String[] args){
+//        !Arrays.asList(args).contains("-help")
+
+        if(Arrays.toString(args).toLowerCase().contains("-help")){
+            SimpleImageConvector.printHelp();
+            System.exit(1);
+        }
 
         if(args.length%2!=0){
             System.out.println("Wrong params, can't run!");
@@ -37,12 +46,6 @@ public class ApplicationArguments {
 
         return Integer.parseInt(keysAndValues.get(key.toLowerCase()));
     }
-
-//    public double getDoubleValue(String key){
-//        assert !containKey(key.toLowerCase());
-//
-//        return Double.parseDouble(keysAndValues.get(key.toLowerCase()));
-//    }
 
     @Override
     public String toString() {

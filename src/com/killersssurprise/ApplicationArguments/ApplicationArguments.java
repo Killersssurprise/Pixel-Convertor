@@ -10,7 +10,6 @@ public class ApplicationArguments {
     private HashMap<String, String> keysAndValues;
 
     public ApplicationArguments(String[] args){
-//        !Arrays.asList(args).contains("-help")
 
         if(Arrays.toString(args).toLowerCase().contains("-help")){
             SimpleImageConvector.printHelp();

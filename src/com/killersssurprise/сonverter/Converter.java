@@ -44,7 +44,6 @@ public class Converter {
             float done = (float) i / rows * 100;
             if (percentDoneCounter < (int) done) {
                 percentDoneCounter = (int) done;
-//                clearConsole();
                 if (percentDoneCounter % 5 == 0)
                     System.out.print(".." + percentDoneCounter + "%");
             }

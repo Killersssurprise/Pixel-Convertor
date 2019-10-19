@@ -1,8 +1,8 @@
-# Image pixel converter (Pixel battle converter)
+# Pixel-Convertor (Pixel-Converter, Pixel battle converter, Image Pixelizer)
 
 <!--- [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) -->
 
-Pixel converter is an OpenCV powered Java Image converter which allow you to get any pixelized image.
+Pixel-Convertor is an open source OpenCV Java powered Image Pixelizer which allow you to get any Pixelized image using certain colors you choose.
 
   - Supports median, bilateral, gauss filtration, erode and dilate methods
   - Use any colors you want
@@ -11,26 +11,26 @@ Pixel converter is an OpenCV powered Java Image converter which allow you to get
 
 # What it does
 
-Here is an inline 
+Here is an example 
 
-<img src="https://i.pinimg.com/originals/b8/a8/a2/b8a8a2b3d11ca5a56702899fb0e60028.jpg" alt="text" width="351" height="443"> <img src="src/crusader_output.png" alt="text" width="351" height="443"> <img src="src/crusader_output2.png" alt="text" width="351" height="443">
+<img src="https://i.pinimg.com/originals/b8/a8/a2/b8a8a2b3d11ca5a56702899fb0e60028.jpg" alt="text" width="234" height="295"> <img src="src/crusader_output.png" alt="text" width="234" height="295"> <img src="src/crusader_output2.png" alt="text" width="234" height="295">
 
 
 
-<img src="src/i1.jpg" alt="text" width="480" height="345">  <img src="src/i1.png" alt="text" width="480" height="345">
+<img src="src/i1.jpg" alt="text" width="320" height="230">  <img src="src/i1.png" alt="text" width="320" height="230">
 
-<img src="src/i2.jpg" alt="text" width="480" height="300">  <img src="src/i2.png" alt="text" width="480" height="300">
+<img src="src/i2.jpg" alt="text" width="320" height="200">  <img src="src/i2.png" alt="text" width="320" height="200">
 
 
 
 ### Tech
 
-Image Pixel Converter itself is open source with a [public repository][Pixel Convertor]
+Pixel-Convertor itself is open source with a [public repository][Pixel Convertor]
  on GitHub.
 
 ### Installation
 
-Image Pixel Converter requires [OpenCV](https://opencv.org/) v4.x.x+ to run.
+Pixel-Convertor requires [OpenCV](https://opencv.org/) v4.x.x+ to run.
 
 Install the dependencies and start the app
 
@@ -48,6 +48,8 @@ $ java -jar pixelconvertor.jar attrs
   -g = green color correction [-255;255]
   -b = blue color [-255;255]
   -median k_size = setup the median filtration with k_size (k_size should be odd)
+  -bilateral d,sigmaColor,sigmaSpace = setup the bilateral filtration with d, sigmaColor,and sigmaspace params.
+  -gauss size,sigmaX,sigmaY = setup the gauss filtration with square size and sigmaX with sigmaY.
   -erode k_size = set erode with k_size arg.(k_size should be odd)
   -dilate k_size = set dilate with k_size arg. (k_size should be odd)
  -input = the input image path 
@@ -88,7 +90,7 @@ $ java -jar <how_you_call_artifacts_name>.jar -g 20 -dilate 1 -width 260 -height
 
 ### Tech
 
-Pixelizer uses a number of open source projects to work properly:
+Pixel-Convertor uses a number of open source projects to work properly:
 
 * [OpenCV] - Open Source Computer Vision Library
 * [Android-Color dif] - Tool for analyzing human's vision color recognizing
@@ -96,7 +98,6 @@ Pixelizer uses a number of open source projects to work properly:
 
 # Todos:
   - Import and pixelize images from Internet
-  - Add more filter methods
   - Add video pixelize methods
 
 
@@ -106,7 +107,7 @@ License
 MIT
 
 
-**Free Software, Hell Yeah!**
+**Free Software**
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
@@ -122,3 +123,4 @@ MIT
    [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
    [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
    [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
+   [app-name] Pixel-Convertor

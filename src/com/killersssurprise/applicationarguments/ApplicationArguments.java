@@ -2,8 +2,10 @@ package com.killersssurprise.applicationarguments;
 
 import com.killersssurprise.сonverter.SimpleImageConverter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class ApplicationArguments {
 
@@ -24,12 +26,20 @@ public class ApplicationArguments {
     public static final String KEY_ERODE = "-erode";
 
     public static final String KEY_COLORS = "-colors";
+    public static final String KEY_HELP = "-help";
+
+    public static final String[] ARGUMENTS = {KEY_WIDTH,KEY_HEIGHT,KEY_RED_CORRECTION,KEY_GREEN_CORRECTION, KEY_BLUE_CORRECTION,
+    KEY_INPUT_PATH, KEY_OUTPUT_PATH,KEY_MEDIAN,KEY_BILATERAL,KEY_GAUSS,KEY_DILATE,KEY_ERODE,KEY_COLORS};
+
+    private static ArrayList<String> arguments_order;
 
     private HashMap<String, String> keysAndValues;
 
     public ApplicationArguments(String[] args){
 
-        if(Arrays.toString(args).toLowerCase().contains("-help")){
+        arguments_order = new ArrayList<>();
+
+        if(Arrays.toString(args).toLowerCase().contains(KEY_HELP)){
             SimpleImageConverter.printHelp();
             System.exit(1);
         }
@@ -40,12 +50,52 @@ public class ApplicationArguments {
         }
 
 
+        for(int i=0;i<args.length;i+=2){
+
+            if(!Arrays.asList(ARGUMENTS).contains(args[i].toLowerCase())) {
+                System.out.println("Wrong arg "+args[i]);
+                System.exit(1);
+            }
+
+        }
+
         keysAndValues = new HashMap<>();
 
         for(int i=0;i<args.length;i+=2){
-            keysAndValues.put(args[i].toLowerCase(),args[i+1].toLowerCase());
+
+            if(keysAndValues.containsKey(args[i].toLowerCase())){
+//                System.out.println("Already contain this key! Skipping...");
+                int counter=1;
+                while(true){
+                    if(keysAndValues.containsKey(args[i].toLowerCase()+""+counter)){
+                        counter++;
+                    }else{
+                        keysAndValues.put(args[i].toLowerCase()+""+counter,args[i+1].toLowerCase());
+                        arguments_order.add(args[i].toLowerCase()+""+counter);
+                        break;
+                    }
+                }
+
+            }else{
+                keysAndValues.put(args[i].toLowerCase(),args[i+1].toLowerCase());
+                arguments_order.add(args[i].toLowerCase());
+            }
+
+
         }
 
+
+
+        System.out.println(toString());
+
+    }
+
+    public HashMap<String, String> getKeysAndValues() {
+        return keysAndValues;
+    }
+
+    public List<String> getOrderedKeys(){
+        return arguments_order;
     }
 
     public boolean containKey(String key){

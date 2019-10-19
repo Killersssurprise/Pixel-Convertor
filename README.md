@@ -1,10 +1,10 @@
 # Image pixel converter (Pixel battle converter)
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+<!--- [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) -->
 
-Pixel converter is a  mobile-ready, offline-ready, OpenCV powered Java Image converter which allow you to get any pixelized image.
+Pixel converter is an OpenCV powered Java Image converter which allow you to get any pixelized image.
 
-  - Supports median filtration, erode and dilate methods
+  - Supports median, bilateral, gauss filtration, erode and dilate methods
   - Use any colors you want
   - Support image resizing
 

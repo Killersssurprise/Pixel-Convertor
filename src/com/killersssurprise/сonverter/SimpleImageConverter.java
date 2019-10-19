@@ -4,10 +4,11 @@ import com.killersssurprise.applicationarguments.ApplicationArguments;
 import com.killersssurprise.palette.Palette;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
+
+import static com.killersssurprise.applicationarguments.ApplicationArguments.*;
 
 /**
  * @author killersssurprise
@@ -20,23 +21,7 @@ public class SimpleImageConverter {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 
-    private static final int FINISH_ERROR_CODE = -1;
-    private static final String KEY_WIDTH = "-width";
-    private static final String KEY_HEIGHT = "-height";
-    private static final String KEY_RED_CORRECTION = "-r";
-    private static final String KEY_GREEN_CORRECTION = "-g";
-    private static final String KEY_BLUE_CORRECTION = "-b";
 
-    private static final String KEY_INPUT_PATH = "-input";
-    private static final String KEY_OUTPUT_PATH = "-output";
-
-    private static final String KEY_MEDIAN = "-median";
-    private static final String KEY_BILATERAL = "-bilateral";
-    private static final String KEY_GAUSS = "-gauss";
-    private static final String KEY_DILATE = "-dilate";
-    private static final String KEY_ERODE = "-erode";
-
-    private static final String KEY_COLORS = "-colors";
 
     public static void main(String[] args) {
 
@@ -59,15 +44,30 @@ public class SimpleImageConverter {
             System.exit(FINISH_ERROR_CODE);
         }
 
-
         Mat imgIncome = Imgcodecs.imread(inputPath);
+
+        getMatAfterUpdate(arguments, imgIncome);
+
+
+        Palette p = new Palette();
+        Converter.colorConvert(imgIncome, p);
+
+
+//        Imgcodecs.imwrite(outputPath, imgIncome);
+        Imgcodecs.imwrite(arguments.getValue(KEY_OUTPUT_PATH), imgIncome);
+
+    }
+
+
+    public static Mat getMatAfterUpdate(ApplicationArguments arguments, Mat imgIncome) {
 
         if (arguments.containKey(KEY_MEDIAN)) {
             if (arguments.getIntValue(KEY_MEDIAN) < 1 || arguments.getIntValue(KEY_MEDIAN) % 2 == 0) {
                 System.out.println(KEY_MEDIAN + " arg should be bigger than 0 and it can't be even!");
                 System.exit(FINISH_ERROR_CODE);
             }
-            Imgproc.medianBlur(imgIncome, imgIncome, arguments.getIntValue(KEY_MEDIAN));
+//            Imgproc.medianBlur(imgIncome, imgIncome, arguments.getIntValue(KEY_MEDIAN));
+            Converter.doMedian(imgIncome, arguments.getIntValue(KEY_MEDIAN));
         }
 
         if (arguments.containKey(KEY_DILATE)) {
@@ -76,9 +76,11 @@ public class SimpleImageConverter {
                 System.out.println(KEY_DILATE + " arg should be bigger than 0");
                 System.exit(FINISH_ERROR_CODE);
             }
-            Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
-                    new Size(arguments.getIntValue(KEY_DILATE), arguments.getIntValue(KEY_DILATE)));
-            Imgproc.morphologyEx(imgIncome, imgIncome, Imgproc.MORPH_DILATE, kernel);
+//            Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
+//                    new Size(arguments.getIntValue(KEY_DILATE), arguments.getIntValue(KEY_DILATE)));
+//            Imgproc.morphologyEx(imgIncome, imgIncome, Imgproc.MORPH_DILATE, kernel);
+
+            Converter.doDilate(imgIncome,arguments.getIntValue(KEY_DILATE));
 
         }
 
@@ -89,9 +91,11 @@ public class SimpleImageConverter {
                 System.out.println(KEY_ERODE + " arg should be bigger than 0");
                 System.exit(FINISH_ERROR_CODE);
             }
-            Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
-                    new Size(arguments.getIntValue(KEY_ERODE), arguments.getIntValue(KEY_ERODE)));
-            Imgproc.morphologyEx(imgIncome, imgIncome, Imgproc.MORPH_DILATE, kernel);
+//            Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
+//                    new Size(arguments.getIntValue(KEY_ERODE), arguments.getIntValue(KEY_ERODE)));
+//            Imgproc.morphologyEx(imgIncome, imgIncome, Imgproc.MORPH_DILATE, kernel);
+
+            Converter.doErode(imgIncome,arguments.getIntValue(KEY_ERODE));
 
         }
 
@@ -105,7 +109,7 @@ public class SimpleImageConverter {
                 System.exit(FINISH_ERROR_CODE);
             }
 
-            if (bilArgs.length >3) {
+            if (bilArgs.length > 3) {
                 System.out.println("More than 3 arguments found for Bilateral filter. Which ones should be in charge? ");
                 System.exit(FINISH_ERROR_CODE);
             }
@@ -117,12 +121,11 @@ public class SimpleImageConverter {
                 }
             }
 
+//            Mat output = new Mat();
+//            Imgproc.bilateralFilter(imgIncome, output, Integer.parseInt(bilArgs[0]), Integer.parseInt(bilArgs[1]), Integer.parseInt(bilArgs[2]));
+//            imgIncome = output;
 
-//            Imgproc.bilateralFilter(imgIncome, imgIncome, 39, 5 * 2, 5 * 2);
-            //D, sigma color, sigma space
-            Mat output = new Mat();
-            Imgproc.bilateralFilter(imgIncome, output, Integer.parseInt(bilArgs[0]), Integer.parseInt(bilArgs[1]), Integer.parseInt(bilArgs[2]));
-            imgIncome = output;
+            Converter.doBilateral(imgIncome, Integer.parseInt(bilArgs[0]), Integer.parseInt(bilArgs[1]), Integer.parseInt(bilArgs[2]));
 
         }
 
@@ -137,7 +140,7 @@ public class SimpleImageConverter {
                 System.exit(FINISH_ERROR_CODE);
             }
 
-            if (gausArgs.length >3) {
+            if (gausArgs.length > 3) {
                 System.out.println("More than 3 arguments found for Gauss filter. Which ones should be in charge? ");
                 System.exit(FINISH_ERROR_CODE);
             }
@@ -149,31 +152,35 @@ public class SimpleImageConverter {
                 }
             }
 
-            if(Integer.parseInt(gausArgs[0])%2==0||Integer.parseInt(gausArgs[1])%2==0){
+            if (Integer.parseInt(gausArgs[0]) % 2 == 0 || Integer.parseInt(gausArgs[1]) % 2 == 0) {
                 System.out.println("One of the size arguments for Gauss filter is even but should be odd!");
                 System.exit(FINISH_ERROR_CODE);
             }
 
             //size 1, size 2, sigma
 //            Imgproc.GaussianBlur(imgIncome, imgIncome, new Size(1, 1), 0);
-            Imgproc.GaussianBlur(imgIncome, imgIncome, new Size(Integer.parseInt(gausArgs[0]), Integer.parseInt(gausArgs[1])), Integer.parseInt(gausArgs[2]));
-
+//            Imgproc.GaussianBlur(imgIncome, imgIncome, new Size(Integer.parseInt(gausArgs[0]), Integer.parseInt(gausArgs[1])), Integer.parseInt(gausArgs[2]));
+//            Imgproc.GaussianBlur(imgIncome, imgIncome, new Size(Integer.parseInt(gausArgs[0]), Integer.parseInt(gausArgs[0])),Integer.parseInt(gausArgs[1],Integer.parseInt(gausArgs[2])));
+            Converter.doGauss(imgIncome, Integer.parseInt(gausArgs[0]), Integer.parseInt(gausArgs[1]), Integer.parseInt(gausArgs[2]));
 
         }
 
 
         if (arguments.containKey(KEY_RED_CORRECTION)) {
-            Core.add(imgIncome, new Scalar(0, 0, arguments.getIntValue(KEY_RED_CORRECTION)), imgIncome);
+//            Core.add(imgIncome, new Scalar(0, 0, arguments.getIntValue(KEY_RED_CORRECTION)), imgIncome);
+            Converter.doRCorrection(imgIncome, arguments.getIntValue(KEY_RED_CORRECTION));
         }
 
 
         if (arguments.containKey(KEY_GREEN_CORRECTION)) {
-            Core.add(imgIncome, new Scalar(0, arguments.getIntValue(KEY_GREEN_CORRECTION), 0), imgIncome);
+//            Core.add(imgIncome, new Scalar(0, arguments.getIntValue(KEY_GREEN_CORRECTION), 0), imgIncome);
+            Converter.doGCorrection(imgIncome, arguments.getIntValue(KEY_GREEN_CORRECTION));
         }
 
 
         if (arguments.containKey(KEY_BLUE_CORRECTION)) {
-            Core.add(imgIncome, new Scalar(arguments.getIntValue(KEY_BLUE_CORRECTION), 0, 0), imgIncome);
+//            Core.add(imgIncome, new Scalar(arguments.getIntValue(KEY_BLUE_CORRECTION), 0, 0), imgIncome);
+            Converter.doBCorrection(imgIncome, arguments.getIntValue(KEY_BLUE_CORRECTION));
         }
 
 
@@ -189,8 +196,10 @@ public class SimpleImageConverter {
                 System.exit(FINISH_ERROR_CODE);
             }
 
-            Size scaleSize = new Size(arguments.getIntValue(KEY_WIDTH), arguments.getIntValue(KEY_HEIGHT));
-            Imgproc.resize(imgIncome, imgIncome, scaleSize);
+//            Size scaleSize = new Size(arguments.getIntValue(KEY_WIDTH), arguments.getIntValue(KEY_HEIGHT));
+//            Imgproc.resize(imgIncome, imgIncome, scaleSize);
+
+            Converter.doResize(imgIncome, arguments.getIntValue(KEY_WIDTH), arguments.getIntValue(KEY_HEIGHT));
 
 
         } else {
@@ -210,30 +219,23 @@ public class SimpleImageConverter {
 
             Palette.updateColors(newColors);
         }
-
-
-        Palette p = new Palette();
-        Converter.colorConvert(imgIncome, p);
-
-
-        Imgcodecs.imwrite(outputPath, imgIncome);
-
+        return imgIncome;
     }
 
     public static void printHelp() {
-        System.out.println(KEY_WIDTH+" set the output image width");
-        System.out.println(KEY_HEIGHT+" set the output image height");
-        System.out.println(KEY_RED_CORRECTION+" set the output image red color correction");
-        System.out.println(KEY_GREEN_CORRECTION+" set the output image green color correction");
-        System.out.println(KEY_BLUE_CORRECTION+" set the output image blue color correction");
-        System.out.println(KEY_INPUT_PATH+" set the input image path to proceed. For example-  Linux: '/home/folder/name.png' Windows: 'C:\\folder\\name.png'");
-        System.out.println(KEY_OUTPUT_PATH+" set the output image path to save. For example-  Linux: '/home/folder/name.png' Windows: 'C:\\folder\\name.png'");
-        System.out.println(KEY_MEDIAN+" set the output image median method filtration with arg K. Using: "+KEY_MEDIAN+" 3");
-        System.out.println(KEY_BILATERAL+" set the output image bilateral method filtration with arg K,SIGMA_COLOR,SIGMA_SPACE (Use comma to separate them, not space or dots!). Using:  "+KEY_BILATERAL+" 30,5,5");
-        System.out.println(KEY_GAUSS+" set the output image gauss method filtration with arg SIZE_1,SIZE_2,SIGMA (Use comma to separate them, not space or dots!). SIZE_1 and SIZE_2 shouldn't be even just odd. Using:  "+KEY_GAUSS+" 1,1,20");
-        System.out.println(KEY_ERODE+" set the output image erode processing with arg KERNEL_SIDE. Using:  "+KEY_ERODE+" 3");
-        System.out.println(KEY_DILATE+" set the output image dilate processing with arg KERNEL_SIDE. Using:  "+KEY_DILATE+" 3");
-        System.out.println(KEY_COLORS+" set the output image colors palette. Replacing default one! (Use comma to separate them, not space or dots!) Using:  "+KEY_COLORS+" #FFFFFF,#000000,#CDCDCD");
+        System.out.println(KEY_WIDTH + " set the output image width");
+        System.out.println(KEY_HEIGHT + " set the output image height");
+        System.out.println(KEY_RED_CORRECTION + " set the output image red color correction");
+        System.out.println(KEY_GREEN_CORRECTION + " set the output image green color correction");
+        System.out.println(KEY_BLUE_CORRECTION + " set the output image blue color correction");
+        System.out.println(KEY_INPUT_PATH + " set the input image path to proceed. For example-  Linux: '/home/folder/name.png' Windows: 'C:\\folder\\name.png'");
+        System.out.println(KEY_OUTPUT_PATH + " set the output image path to save. For example-  Linux: '/home/folder/name.png' Windows: 'C:\\folder\\name.png'");
+        System.out.println(KEY_MEDIAN + " set the output image median method filtration with arg K. Using: " + KEY_MEDIAN + " 3");
+        System.out.println(KEY_BILATERAL + " set the output image bilateral method filtration with arg K,SIGMA_COLOR,SIGMA_SPACE (Use comma to separate them, not space or dots!). Using:  " + KEY_BILATERAL + " 30,5,5");
+        System.out.println(KEY_GAUSS + " set the output image gauss method filtration with arg SIZE_1,SIZE_2,SIGMA (Use comma to separate them, not space or dots!). SIZE_1 and SIZE_2 shouldn't be even just odd. Using:  " + KEY_GAUSS + " 1,1,20");
+        System.out.println(KEY_ERODE + " set the output image erode processing with arg KERNEL_SIDE. Using:  " + KEY_ERODE + " 3");
+        System.out.println(KEY_DILATE + " set the output image dilate processing with arg KERNEL_SIDE. Using:  " + KEY_DILATE + " 3");
+        System.out.println(KEY_COLORS + " set the output image colors palette. Replacing default one! (Use comma to separate them, not space or dots!) Using:  " + KEY_COLORS + " #FFFFFF,#000000,#CDCDCD");
         System.exit(1);
     }
 }

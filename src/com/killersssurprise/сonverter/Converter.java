@@ -1,7 +1,10 @@
 package com.killersssurprise.сonverter;
 
 import com.killersssurprise.palette.Palette;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
+import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 /**
@@ -57,6 +60,75 @@ public class Converter {
         Imgproc.cvtColor(income, income, Imgproc.COLOR_RGB2BGR);
 
         return income;
+    }
+
+    public static Mat doBilateral(Mat input, int d, int sigmaColor, int sigmaSpace){
+
+        Mat output = new Mat();
+        Imgproc.bilateralFilter(input, output, d, sigmaColor, sigmaSpace);
+        input = output;
+
+        return input;
+    }
+
+    public static Mat doMedian(Mat input, int k){
+
+        Imgproc.medianBlur(input, input, k);
+
+        return input;
+    }
+
+    public static Mat doDilate(Mat input, int size){
+
+        Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
+                new Size(size, size));
+        Imgproc.morphologyEx(input, input, Imgproc.MORPH_DILATE, kernel);
+
+        return input;
+    }
+
+    public static Mat doErode(Mat input, int size){
+
+        Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
+                new Size(size,size));
+        Imgproc.morphologyEx(input, input, Imgproc.MORPH_DILATE, kernel);
+
+        return input;
+    }
+
+    public static Mat doGauss(Mat input, int size, int sigmaX, int sigmaY){
+
+        Imgproc.GaussianBlur(input, input, new Size(size, size), sigmaX, sigmaY);
+
+        return input;
+    }
+
+    public static Mat doRCorrection(Mat input, int r){
+
+        Core.add(input, new Scalar(0, 0, r), input);
+
+        return input;
+    }
+
+    public static Mat doGCorrection(Mat input, int g){
+
+        Core.add(input, new Scalar(0, g, 0), input);
+
+        return input;
+    }
+
+    public static Mat doBCorrection(Mat input, int b){
+
+        Core.add(input, new Scalar(0, 0, b), input);
+
+        return input;
+    }
+
+    public static Mat doResize(Mat input, int width, int height){
+
+        Size scaleSize = new Size(width, height);
+        Imgproc.resize(input, input, scaleSize);
+        return input;
     }
 
 }

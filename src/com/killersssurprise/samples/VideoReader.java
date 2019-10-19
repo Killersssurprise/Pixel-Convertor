@@ -1,5 +1,6 @@
 package com.killersssurprise.samples;
 
+import com.killersssurprise.applicationarguments.ApplicationArguments;
 import com.killersssurprise.сonverter.Converter;
 import com.killersssurprise.сonverter.SimpleImageConverter;
 import com.killersssurprise.palette.Palette;
@@ -20,6 +21,11 @@ public class VideoReader {
     }
 
     public static void main(String[] args) {
+
+        ApplicationArguments arguments = new ApplicationArguments(args);
+
+
+
         JFrame window = new JFrame("Просмотр видео");
         window.setSize(1000, 600);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,8 +35,6 @@ public class VideoReader {
         window.setVisible(true);
 
         VideoWriter writer = new VideoWriter("/home/mixa/initial_d/initial_d_output.avi",
-//                VideoWriter.fourcc('X', 'V', 'I', 'D'), 25, new Size(1280, 720), true);
-//                VideoWriter.fourcc('X', 'V', 'I', 'D'), 25, new Size(960, 540), true);
                 VideoWriter.fourcc('X', 'V', 'I', 'D'), 25, new Size(640, 360), true);
 
 

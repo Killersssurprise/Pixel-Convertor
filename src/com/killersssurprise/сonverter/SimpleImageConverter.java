@@ -4,9 +4,7 @@ import com.killersssurprise.applicationarguments.ApplicationArguments;
 import com.killersssurprise.palette.Palette;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.core.Size;
 import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.imgproc.Imgproc;
 
 import static com.killersssurprise.applicationarguments.ApplicationArguments.*;
 
@@ -20,7 +18,6 @@ public class SimpleImageConverter {
     static {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
-
 
 
     public static void main(String[] args) {
@@ -61,127 +58,226 @@ public class SimpleImageConverter {
 
     public static Mat getMatAfterUpdate(ApplicationArguments arguments, Mat imgIncome) {
 
-        if (arguments.containKey(KEY_MEDIAN)) {
-            if (arguments.getIntValue(KEY_MEDIAN) < 1 || arguments.getIntValue(KEY_MEDIAN) % 2 == 0) {
-                System.out.println(KEY_MEDIAN + " arg should be bigger than 0 and it can't be even!");
-                System.exit(FINISH_ERROR_CODE);
-            }
-//            Imgproc.medianBlur(imgIncome, imgIncome, arguments.getIntValue(KEY_MEDIAN));
-            Converter.doMedian(imgIncome, arguments.getIntValue(KEY_MEDIAN));
-        }
 
-        if (arguments.containKey(KEY_DILATE)) {
-
-            if (arguments.getIntValue(KEY_DILATE) < 1) {
-                System.out.println(KEY_DILATE + " arg should be bigger than 0");
-                System.exit(FINISH_ERROR_CODE);
-            }
-//            Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
-//                    new Size(arguments.getIntValue(KEY_DILATE), arguments.getIntValue(KEY_DILATE)));
-//            Imgproc.morphologyEx(imgIncome, imgIncome, Imgproc.MORPH_DILATE, kernel);
-
-            Converter.doDilate(imgIncome,arguments.getIntValue(KEY_DILATE));
-
-        }
-
-
-        if (arguments.containKey(KEY_ERODE)) {
-
-            if (arguments.getIntValue(KEY_ERODE) < 1) {
-                System.out.println(KEY_ERODE + " arg should be bigger than 0");
-                System.exit(FINISH_ERROR_CODE);
-            }
-//            Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
-//                    new Size(arguments.getIntValue(KEY_ERODE), arguments.getIntValue(KEY_ERODE)));
-//            Imgproc.morphologyEx(imgIncome, imgIncome, Imgproc.MORPH_DILATE, kernel);
-
-            Converter.doErode(imgIncome,arguments.getIntValue(KEY_ERODE));
-
-        }
-
-        if (arguments.containKey(KEY_BILATERAL)) {
-
-            String[] bilArgs = arguments.getValue(KEY_BILATERAL).split(",");
-
-            //3 args check
-            if (bilArgs.length < 3) {
-                System.out.println("There are just " + bilArgs.length + " arguments found for Bilateral filter args. " + (bilArgs.length > 1 ? "One" : "Two") + " more left");
-                System.exit(FINISH_ERROR_CODE);
-            }
-
-            if (bilArgs.length > 3) {
-                System.out.println("More than 3 arguments found for Bilateral filter. Which ones should be in charge? ");
-                System.exit(FINISH_ERROR_CODE);
-            }
-
-            for (String a : bilArgs) {
-                if (Integer.parseInt(a) < 1) {
-                    System.out.println("One of the arguments for Bilateral filter is less than 1..");
+//        for (String key : arguments.getKeysAndValues().keySet()) {
+        for (String key : arguments.getOrderedKeys()) {
+            if (key.contains(KEY_MEDIAN)) {
+                System.out.println("Do median "+key);
+                if (arguments.getIntValue(KEY_MEDIAN) < 1 || arguments.getIntValue(KEY_MEDIAN) % 2 == 0) {
+                    System.out.println(KEY_MEDIAN + " arg should be bigger than 0 and it can't be even!");
                     System.exit(FINISH_ERROR_CODE);
                 }
+                Converter.doMedian(imgIncome, arguments.getIntValue(KEY_MEDIAN));
             }
 
-//            Mat output = new Mat();
-//            Imgproc.bilateralFilter(imgIncome, output, Integer.parseInt(bilArgs[0]), Integer.parseInt(bilArgs[1]), Integer.parseInt(bilArgs[2]));
-//            imgIncome = output;
+            if (key.contains(KEY_BILATERAL)) {
+                String[] bilArgs = arguments.getValue(KEY_BILATERAL).split(",");
 
-            Converter.doBilateral(imgIncome, Integer.parseInt(bilArgs[0]), Integer.parseInt(bilArgs[1]), Integer.parseInt(bilArgs[2]));
-
-        }
-
-        if (arguments.containKey(KEY_GAUSS)) {
-
-
-            String[] gausArgs = arguments.getValue(KEY_GAUSS).split(",");
-
-            //3 args check
-            if (gausArgs.length < 3) {
-                System.out.println("There are just " + gausArgs.length + " arguments found for Gauss filter args. " + (gausArgs.length > 1 ? "One" : "Two") + " more left");
-                System.exit(FINISH_ERROR_CODE);
-            }
-
-            if (gausArgs.length > 3) {
-                System.out.println("More than 3 arguments found for Gauss filter. Which ones should be in charge? ");
-                System.exit(FINISH_ERROR_CODE);
-            }
-
-            for (String a : gausArgs) {
-                if (Integer.parseInt(a) < 0) {
-                    System.out.println("One of the arguments for Gauss filter is less than 0..");
+                //3 args check
+                if (bilArgs.length < 3) {
+                    System.out.println("There are just " + bilArgs.length + " arguments found for Bilateral filter args. " + (bilArgs.length > 1 ? "One" : "Two") + " more left");
                     System.exit(FINISH_ERROR_CODE);
                 }
+
+                if (bilArgs.length > 3) {
+                    System.out.println("More than 3 arguments found for Bilateral filter. Which ones should be in charge? ");
+                    System.exit(FINISH_ERROR_CODE);
+                }
+
+                for (String a : bilArgs) {
+                    if (Integer.parseInt(a) < 1) {
+                        System.out.println("One of the arguments for Bilateral filter is less than 1..");
+                        System.exit(FINISH_ERROR_CODE);
+                    }
+                }
+
+                Converter.doBilateral(imgIncome, Integer.parseInt(bilArgs[0]), Integer.parseInt(bilArgs[1]), Integer.parseInt(bilArgs[2]));
+
             }
 
-            if (Integer.parseInt(gausArgs[0]) % 2 == 0 || Integer.parseInt(gausArgs[1]) % 2 == 0) {
-                System.out.println("One of the size arguments for Gauss filter is even but should be odd!");
-                System.exit(FINISH_ERROR_CODE);
+            if (key.contains(KEY_GAUSS)) {
+                String[] gausArgs = arguments.getValue(KEY_GAUSS).split(",");
+
+                //3 args check
+                if (gausArgs.length < 3) {
+                    System.out.println("There are just " + gausArgs.length + " arguments found for Gauss filter args. " + (gausArgs.length > 1 ? "One" : "Two") + " more left");
+                    System.exit(FINISH_ERROR_CODE);
+                }
+
+                if (gausArgs.length > 3) {
+                    System.out.println("More than 3 arguments found for Gauss filter. Which ones should be in charge? ");
+                    System.exit(FINISH_ERROR_CODE);
+                }
+
+                for (String a : gausArgs) {
+                    if (Integer.parseInt(a) < 0) {
+                        System.out.println("One of the arguments for Gauss filter is less than 0..");
+                        System.exit(FINISH_ERROR_CODE);
+                    }
+                }
+
+                if (Integer.parseInt(gausArgs[0]) % 2 == 0 || Integer.parseInt(gausArgs[1]) % 2 == 0) {
+                    System.out.println("One of the size arguments for Gauss filter is even but should be odd!");
+                    System.exit(FINISH_ERROR_CODE);
+                }
+
+                Converter.doGauss(imgIncome, Integer.parseInt(gausArgs[0]), Integer.parseInt(gausArgs[1]), Integer.parseInt(gausArgs[2]));
+
             }
 
-            //size 1, size 2, sigma
-//            Imgproc.GaussianBlur(imgIncome, imgIncome, new Size(1, 1), 0);
-//            Imgproc.GaussianBlur(imgIncome, imgIncome, new Size(Integer.parseInt(gausArgs[0]), Integer.parseInt(gausArgs[1])), Integer.parseInt(gausArgs[2]));
-//            Imgproc.GaussianBlur(imgIncome, imgIncome, new Size(Integer.parseInt(gausArgs[0]), Integer.parseInt(gausArgs[0])),Integer.parseInt(gausArgs[1],Integer.parseInt(gausArgs[2])));
-            Converter.doGauss(imgIncome, Integer.parseInt(gausArgs[0]), Integer.parseInt(gausArgs[1]), Integer.parseInt(gausArgs[2]));
+            if (key.contains(KEY_RED_CORRECTION)) {
+                System.out.println("Do red correction");
+                Converter.doRCorrection(imgIncome, arguments.getIntValue(KEY_RED_CORRECTION));
+            }
 
+            if (key.contains(KEY_GREEN_CORRECTION)) {
+                Converter.doGCorrection(imgIncome, arguments.getIntValue(KEY_GREEN_CORRECTION));
+            }
+
+            if (key.contains(KEY_BLUE_CORRECTION)) {
+                Converter.doBCorrection(imgIncome, arguments.getIntValue(KEY_BLUE_CORRECTION));
+            }
+
+            if (key.contains(KEY_ERODE)) {
+                if (arguments.getIntValue(KEY_ERODE) < 1) {
+                    System.out.println(KEY_ERODE + " arg should be bigger than 0");
+                    System.exit(FINISH_ERROR_CODE);
+                }
+
+                Converter.doErode(imgIncome, arguments.getIntValue(KEY_ERODE));
+            }
+
+            if (key.contains(KEY_DILATE)) {
+                if (arguments.getIntValue(KEY_DILATE) < 1) {
+                    System.out.println(KEY_DILATE + " arg should be bigger than 0");
+                    System.exit(FINISH_ERROR_CODE);
+                }
+                Converter.doDilate(imgIncome, arguments.getIntValue(KEY_DILATE));
+            }
         }
 
 
-        if (arguments.containKey(KEY_RED_CORRECTION)) {
-//            Core.add(imgIncome, new Scalar(0, 0, arguments.getIntValue(KEY_RED_CORRECTION)), imgIncome);
-            Converter.doRCorrection(imgIncome, arguments.getIntValue(KEY_RED_CORRECTION));
-        }
+//        if (arguments.containKey(KEY_MEDIAN)) {
+//            if (arguments.getIntValue(KEY_MEDIAN) < 1 || arguments.getIntValue(KEY_MEDIAN) % 2 == 0) {
+//                System.out.println(KEY_MEDIAN + " arg should be bigger than 0 and it can't be even!");
+//                System.exit(FINISH_ERROR_CODE);
+//            }
+////            Imgproc.medianBlur(imgIncome, imgIncome, arguments.getIntValue(KEY_MEDIAN));
+//            Converter.doMedian(imgIncome, arguments.getIntValue(KEY_MEDIAN));
+//        }
+
+//        if (arguments.containKey(KEY_DILATE)) {
+//
+//            if (arguments.getIntValue(KEY_DILATE) < 1) {
+//                System.out.println(KEY_DILATE + " arg should be bigger than 0");
+//                System.exit(FINISH_ERROR_CODE);
+//            }
+////            Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
+////                    new Size(arguments.getIntValue(KEY_DILATE), arguments.getIntValue(KEY_DILATE)));
+////            Imgproc.morphologyEx(imgIncome, imgIncome, Imgproc.MORPH_DILATE, kernel);
+//
+//            Converter.doDilate(imgIncome,arguments.getIntValue(KEY_DILATE));
+//
+//        }
 
 
-        if (arguments.containKey(KEY_GREEN_CORRECTION)) {
-//            Core.add(imgIncome, new Scalar(0, arguments.getIntValue(KEY_GREEN_CORRECTION), 0), imgIncome);
-            Converter.doGCorrection(imgIncome, arguments.getIntValue(KEY_GREEN_CORRECTION));
-        }
+//        if (arguments.containKey(KEY_ERODE)) {
+//
+//            if (arguments.getIntValue(KEY_ERODE) < 1) {
+//                System.out.println(KEY_ERODE + " arg should be bigger than 0");
+//                System.exit(FINISH_ERROR_CODE);
+//            }
+////            Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,
+////                    new Size(arguments.getIntValue(KEY_ERODE), arguments.getIntValue(KEY_ERODE)));
+////            Imgproc.morphologyEx(imgIncome, imgIncome, Imgproc.MORPH_DILATE, kernel);
+//
+//            Converter.doErode(imgIncome,arguments.getIntValue(KEY_ERODE));
+//
+//        }
+
+//        if (arguments.containKey(KEY_BILATERAL)) {
+//
+//            String[] bilArgs = arguments.getValue(KEY_BILATERAL).split(",");
+//
+//            //3 args check
+//            if (bilArgs.length < 3) {
+//                System.out.println("There are just " + bilArgs.length + " arguments found for Bilateral filter args. " + (bilArgs.length > 1 ? "One" : "Two") + " more left");
+//                System.exit(FINISH_ERROR_CODE);
+//            }
+//
+//            if (bilArgs.length > 3) {
+//                System.out.println("More than 3 arguments found for Bilateral filter. Which ones should be in charge? ");
+//                System.exit(FINISH_ERROR_CODE);
+//            }
+//
+//            for (String a : bilArgs) {
+//                if (Integer.parseInt(a) < 1) {
+//                    System.out.println("One of the arguments for Bilateral filter is less than 1..");
+//                    System.exit(FINISH_ERROR_CODE);
+//                }
+//            }
+//
+////            Mat output = new Mat();
+////            Imgproc.bilateralFilter(imgIncome, output, Integer.parseInt(bilArgs[0]), Integer.parseInt(bilArgs[1]), Integer.parseInt(bilArgs[2]));
+////            imgIncome = output;
+//
+//            Converter.doBilateral(imgIncome, Integer.parseInt(bilArgs[0]), Integer.parseInt(bilArgs[1]), Integer.parseInt(bilArgs[2]));
+//
+//        }
+
+//        if (arguments.containKey(KEY_GAUSS)) {
+//
+//
+//            String[] gausArgs = arguments.getValue(KEY_GAUSS).split(",");
+//
+//            //3 args check
+//            if (gausArgs.length < 3) {
+//                System.out.println("There are just " + gausArgs.length + " arguments found for Gauss filter args. " + (gausArgs.length > 1 ? "One" : "Two") + " more left");
+//                System.exit(FINISH_ERROR_CODE);
+//            }
+//
+//            if (gausArgs.length > 3) {
+//                System.out.println("More than 3 arguments found for Gauss filter. Which ones should be in charge? ");
+//                System.exit(FINISH_ERROR_CODE);
+//            }
+//
+//            for (String a : gausArgs) {
+//                if (Integer.parseInt(a) < 0) {
+//                    System.out.println("One of the arguments for Gauss filter is less than 0..");
+//                    System.exit(FINISH_ERROR_CODE);
+//                }
+//            }
+//
+//            if (Integer.parseInt(gausArgs[0]) % 2 == 0 || Integer.parseInt(gausArgs[1]) % 2 == 0) {
+//                System.out.println("One of the size arguments for Gauss filter is even but should be odd!");
+//                System.exit(FINISH_ERROR_CODE);
+//            }
+//
+//            //size 1, size 2, sigma
+////            Imgproc.GaussianBlur(imgIncome, imgIncome, new Size(1, 1), 0);
+////            Imgproc.GaussianBlur(imgIncome, imgIncome, new Size(Integer.parseInt(gausArgs[0]), Integer.parseInt(gausArgs[1])), Integer.parseInt(gausArgs[2]));
+////            Imgproc.GaussianBlur(imgIncome, imgIncome, new Size(Integer.parseInt(gausArgs[0]), Integer.parseInt(gausArgs[0])),Integer.parseInt(gausArgs[1],Integer.parseInt(gausArgs[2])));
+//            Converter.doGauss(imgIncome, Integer.parseInt(gausArgs[0]), Integer.parseInt(gausArgs[1]), Integer.parseInt(gausArgs[2]));
+//
+//        }
 
 
-        if (arguments.containKey(KEY_BLUE_CORRECTION)) {
-//            Core.add(imgIncome, new Scalar(arguments.getIntValue(KEY_BLUE_CORRECTION), 0, 0), imgIncome);
-            Converter.doBCorrection(imgIncome, arguments.getIntValue(KEY_BLUE_CORRECTION));
-        }
+//        if (arguments.containKey(KEY_RED_CORRECTION)) {
+////            Core.add(imgIncome, new Scalar(0, 0, arguments.getIntValue(KEY_RED_CORRECTION)), imgIncome);
+//            Converter.doRCorrection(imgIncome, arguments.getIntValue(KEY_RED_CORRECTION));
+//        }
+
+
+//        if (arguments.containKey(KEY_GREEN_CORRECTION)) {
+////            Core.add(imgIncome, new Scalar(0, arguments.getIntValue(KEY_GREEN_CORRECTION), 0), imgIncome);
+//            Converter.doGCorrection(imgIncome, arguments.getIntValue(KEY_GREEN_CORRECTION));
+//        }
+
+
+//        if (arguments.containKey(KEY_BLUE_CORRECTION)) {
+////            Core.add(imgIncome, new Scalar(arguments.getIntValue(KEY_BLUE_CORRECTION), 0, 0), imgIncome);
+//            Converter.doBCorrection(imgIncome, arguments.getIntValue(KEY_BLUE_CORRECTION));
+//        }
 
 
         if (arguments.containKey(KEY_WIDTH) && arguments.containKey(KEY_HEIGHT)) {

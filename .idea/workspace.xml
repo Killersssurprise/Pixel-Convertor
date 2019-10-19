@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571425776316" />
-=======
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="Pixel Convertor:jar" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15dc37c-a44f-4e49-baf8-39c063c5d208" name="Default Changelist" comment="Fixed warnings&#10;Comment not usable code">
+    <list default="true" id="8c1e080e-cce9-4c3b-9aac-b9b2cf421014" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/killersssurprise/ApplicationArguments/ApplicationArguments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/killersssurprise/ApplicationArguments/ApplicationArguments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Pixel_Convertor_jar/p.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pixel Convertor/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pixel Convertor/META-INF/Pixel Convertor.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pixel Convertor/com/killersssurprise/ApplicationArguments/ApplicationArguments.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pixel Convertor/com/killersssurprise/Convertor/SimpleImageToPixelbattleImageConvector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pixel Convertor/com/killersssurprise/Palette/Palette$PaletteColor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pixel Convertor/com/killersssurprise/Palette/Palette.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pixel Convertor/com/killersssurprise/Samples/VideoReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pixel Convertor/com/killersssurprise/Utils/CvUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pixel Convertor/com/killersssurprise/Utils/CvUtilsFX.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pixel Convertor/com/killersssurprise/Utils/Tester.class" beforeDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path=".idea/" />
-    <ignored path=".attach_pid10791" />
-    <ignored path=".attach_pid11309" />
-    <ignored mask=".attach_pid" />
-    <ignored path="src/com/killersssurprise/Samples/" />
-    <ignored path="src/com/killersssurprise/Utils/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,10 +24,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/ApplicationArguments/ApplicationArguments.java">
+        <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/сonverter/SimpleImageConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="330">
+              <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,58 +37,13 @@
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>MatToBufferedImage</find>
-      <find>RGB</find>
-      <find>labDistanceTo</find>
-      <find>Imgproc</find>
-      <find>kernel</find>
-      <find>resize</find>
-      <find>medianBlurFiltration</find>
-      <find>Not</find>
-      <find>toHex</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="new_branch" />
       </map>
     </option>
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/com/killersssurprise/Utils/CvUtils.java" />
-        <option value="$PROJECT_DIR$/src/com/killersssurprise/Utils/CvUtilsFX.java" />
-        <option value="$PROJECT_DIR$/src/com/killersssurprise/Utils/Utils.java" />
-        <option value="$PROJECT_DIR$/src/MainInterface.java" />
-        <option value="$PROJECT_DIR$/src/MainInterface.form" />
-        <option value="$PROJECT_DIR$/src/com/killersssurprise/ApplicationArguments/ApplicatonArguments.java" />
-        <option value="$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageToPixelbattleImageConvector.java" />
-        <option value="$PROJECT_DIR$/src/com/killersssurprise/Convertor/Convertor.java" />
-        <option value="$PROJECT_DIR$/src/com/killersssurprise/Utils/Tester.java" />
-        <option value="$PROJECT_DIR$/src/com/killersssurprise/Samples/VideoReader.java" />
-        <option value="$PROJECT_DIR$/src/com/killersssurprise/Palette/Palette.java" />
-        <option value="$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageConvector.java" />
-        <option value="$PROJECT_DIR$/src/com/killersssurprise/ApplicationArguments/ApplicationArguments.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="303" />
-    <option name="y" value="27" />
-    <option name="width" value="1063" />
-    <option name="height" value="555" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -102,69 +51,57 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Pixel Convertor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pixel Converter" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pixel Convertor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Pixel Convertor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Pixel Convertor" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Pixel Convertor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pixel Converter" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pixel Convertor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Pixel Convertor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pixel Converter" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pixel Convertor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Pixel Convertor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pixel Converter" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pixel Convertor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="killersssurprise" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Pixel Convertor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pixel Converter" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pixel Convertor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="killersssurprise" type="462c0819:PsiDirectoryNode" />
-              <item name="ApplicationArguments" type="462c0819:PsiDirectoryNode" />
+              <item name="сonverter" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
-    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="pixel_convertor" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571424941293" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/killersssurprise/Utils" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="pixel_converter" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571490014531" />
+    <property name="last_opened_file_path" value="$USER_HOME$/OpenCV/opencv-4.1.1/build/bin/opencv-411.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.killersssurprise.Convertor" />
-      <recent name="com.killersssurprise.Palette" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -177,192 +114,88 @@
         </RuleState>
       </list>
     </option>
->>>>>>> master
   </component>
-  <component name="RunManager" selected="Application.ImageConvertor">
-    <configuration name="ImageConvertor" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.killersssurprise.Convertor.SimpleImageConvector" />
-      <module name="Pixel Convertor" />
-      <option name="PROGRAM_PARAMETERS" value="-help -bilateral 40,5,5 -gauss 1,1,20 -dilate 2 -height 100 -input $USER_HOME$/crusader.bmp -output $USER_HOME$/initial_d/crusader.png -median 3" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tester" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.killersssurprise.Utils.Tester" />
+  <component name="RunManager">
+    <configuration name="PixelConverter" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.killersssurprise.сonverter.SimpleImageConverter" />
       <module name="Pixel Convertor" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VideoReader" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.killersssurprise.Samples.VideoReader" />
-      <module name="Pixel Convertor" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.VideoReader" />
-      <item itemvalue="Application.ImageConvertor" />
-      <item itemvalue="Application.Tester" />
-    </list>
   </component>
-<<<<<<< HEAD
-=======
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e15dc37c-a44f-4e49-baf8-39c063c5d208" name="Default Changelist" comment="" />
-      <created>1571079243291</created>
+      <changelist id="3e8220d0-0c73-4339-b0c9-39e95f27d14f" name="Default Changelist" comment="" />
+      <created>1571488500563</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1571079243291</updated>
+      <updated>1571488500563</updated>
     </task>
-    <task id="LOCAL-00001" summary="Added OpenCV image showing utils&#10;Added ApplicationArguments class to read args coming from main&#10;Optimized code for video and image render">
-      <created>1571257246497</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1571257246497</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Added some input value checking&#10;Fixed small bug with blue-green correction">
-      <created>1571345003139</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1571345003139</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Fixed warnings&#10;Comment not usable code">
-      <created>1571345617040</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1571345617040</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Added -help, -bilateral, -gauss args and image processing.">
-      <created>1571424222559</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1571424222560</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20151515" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.4262295" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.3295082" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.24590164" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.38032788" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3180328" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.28032786" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3295082" />
-      <window_info anchor="bottom" id="Thumbnails" order="11" weight="0.3295082" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added OpenCV image showing utils&#10;Added ApplicationArguments class to read args coming from main&#10;Optimized code for video and image render" />
-    <MESSAGE value="Divide Convertor from main class&#10;Renamed SimpleImagePixelBattleImageConvector to SimpleImageConvector&#10;Did some refactor&#10;Removed CVUtilsFX as unnecessary&#10;Added artifacts" />
-    <MESSAGE value="Added some input value checking&#10;Fixed small bug with blue-green correction" />
-    <MESSAGE value="Fixed warnings&#10;Comment not usable code" />
-    <MESSAGE value="Added -help, -bilateral, -gauss args and image processing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added -help, -bilateral, -gauss args and image processing." />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Utils/Utils.java" />
-    <entry file="file://$PROJECT_DIR$/src/MainInterface.java" />
-    <entry file="file://$PROJECT_DIR$/src/MainInterface.form" />
-    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Convertor/Sample.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Utils/CvUtilsFX.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Utils/Tester.java">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor>
+            <markdownNavigatorState />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/сonverter/Converter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+        <state relative-caret-position="165">
+          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Palette/Palette.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2925">
-          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Samples/VideoReader.java">
+    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/сonverter/SimpleImageConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Convertor/SimpleImageConvector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Utils/CvUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-840">
-          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/Convertor/Convertor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/killersssurprise/ApplicationArguments/ApplicationArguments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="330">
+          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -380,7 +213,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -434,18 +266,6 @@
           </splitter-proportions>
         </settings>
       </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
           <last-edited>opencv-411</last-edited>
@@ -460,5 +280,4 @@
       </state>
     </states>
   </component>
->>>>>>> master
 </project>
